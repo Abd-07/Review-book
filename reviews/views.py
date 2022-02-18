@@ -1,4 +1,4 @@
 from django.shortcuts import render
 
 def reviews(request):
-    return render(request,'reviews.html')
+    return render(request,'review.html')

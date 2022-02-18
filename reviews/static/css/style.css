@@ -1,0 +1,8 @@
+/*change website bg and the font of the text*/
+body {
+    background-color: yellow;
+}
+
+title {
+    font-size: 25px;
+}

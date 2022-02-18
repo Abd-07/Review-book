@@ -2,12 +2,36 @@
 {% block content %}
 <div class="review-form">
     <h2>
-        Add a review
+        Add a review:
     </h2>
+    <form method="GET">
+        <p>
+            <input type="text" placeholder="Enter your name" name="name">
+        </p>
+        <p>
+            <input type="text" placeholder="Enter your email" name="email">
+        </p>
+        <p>
+            <textarea placeholder="Write your review" cols="50" rows="5" name="review">
+            </textarea>
+        </p>
+        <p>
+            <input type="submit" value="Publish">
+        </p>
+    </form>
 </div>
 <div class="reviews">
     <h2> 
-        All reviews
+        All reviews:
     </h2>
+    <p>
+        <em>
+            Written by: {{name_1}}
+        </em>
+    </p>
+    <p>
+        Review: {{review_1}}
+    </p>
+    <hr>
 </div>
 {% endblock %}

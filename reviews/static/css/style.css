@@ -6,3 +6,12 @@ body {
 title {
     font-size: 25px;
 }
+
+hr {
+    width: 70%;
+    height: 5px;
+    color:red;
+    max-width: 70%;
+    margin: 0px;
+    border: 1px solid black;
+}

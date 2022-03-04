@@ -4,20 +4,12 @@
     <h2>
         Add a review:
     </h2>
-    <form method="GET">
-        <p>
-            <input type="text" placeholder="Enter your name" name="name">
-        </p>
-        <p>
-            <input type="datetime-local" placeholder="DD/MM/YYYY" name="date">
-        </p>
-        <p>
-            <input type="text" placeholder="Enter your email" name="email">
-        </p>
-        <p>
-            <textarea placeholder="Write your review" cols="50" rows="5" name="review">
-            </textarea>
-        </p>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        
+            <p>Date and Time: </p><input type="datetime-local" placeholder="DD/MM/YYYY" name="date">
+        
         <p>
             <input type="submit" value="Publish">
         </p>
@@ -29,18 +21,16 @@
     </h2>
     <p>
         <em>
-            Written by: {{name_1}}
+            Written by: {{date.name}}
         </em>
     </p>
     <p>
-        Date and Time: {{date_time_1}}
+        Date and Time: {{date.date_time}}
     </p>
     <p>
-        Review: {{review_1}}
+        Review: {{date.review}}
     </p>
-    <p>
-        ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    </p>
+    <hr>
     <p>
         <em>
             Written by: John
@@ -52,9 +42,7 @@
     <p>
         Review: I didn't like the book because it was too long
     </p>
-    <p>
-        ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    </p>
+    <hr>
     <p>
         <em>
             Written by: Alexey
@@ -65,9 +53,6 @@
     </p>
     <p>
         Review: The book was perfect I enjoyed reading it!
-    </p>
-    <p>
-        ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     </p>
     <hr>
 </div>

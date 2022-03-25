@@ -3,6 +3,11 @@
 <html lang="en"> 
 
 <head>
+    <style>
+        body {
+          background-image: url('/Users/abdulazizsuleymanov/Desktop/Python/Django/Review-book/books.jpg');
+        }
+        </style>
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <meta charset="UTF-8">
 <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/png">
@@ -11,7 +16,7 @@
 
 </head>
 
-<body>
+<body id="bg" style="background-image: url('{% static "images/books.jpg" %}');">
     {% block content %}
 
     {% endblock %}

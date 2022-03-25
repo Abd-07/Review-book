@@ -7,10 +7,6 @@
     <form method="POST">
         {% csrf_token %}
         {{form.as_p}}
-        
-            <p>Date and Time: </p><input type="datetime-local" placeholder="DD/MM/YYYY" name="date">
-        
-        <p>
             <input type="submit" value="Publish">
         </p>
     </form>
@@ -19,18 +15,22 @@
     <h2> 
         All reviews:
     </h2>
+    
+    {% for review in reversed(reviews) %}
+    
     <p>
+        Written by:
         <em>
-            Written by: {{date.name}}
+            {{review.name}}
         </em>
     </p>
     <p>
-        Date and Time: {{date.date_time}}
+        Review: {{review.review}}
     </p>
-    <p>
-        Review: {{date.review}}
-    </p>
-    <hr>
+    <hr>{% endfor %}
+    {% endblock %}
+</div>
+<div class="fake_reviews">
     <p>
         <em>
             Written by: John
@@ -41,6 +41,9 @@
     </p>
     <p>
         Review: I didn't like the book because it was too long
+    </p>
+    <p>
+        Rating: 4
     </p>
     <hr>
     <p>
@@ -53,6 +56,9 @@
     </p>
     <p>
         Review: The book was perfect I enjoyed reading it!
+    </p>
+    <p>
+        Rating: 10
     </p>
     <hr>
 </div>

@@ -1,17 +1,36 @@
 /*change website bg and the font of the text*/
-body {
-    background-color: yellow;
-}
+body{
+    width: 100px;
+    height: 100px;
+    font-weight: bold;
+    font-family: Arial;
+	font-size: 14px;
+	color: #FFFFFF;
 
+}
 title {
     font-size: 25px;
 }
 
 hr {
-    width: 70%;
+    width: 200px;
     height: 5px;
-    color:red;
+    color:white;
     max-width: 70%;
     margin: 0px;
-    border: 1px solid black;
+    border: 1px solid white;
+}
+
+.reviews{
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  color: white;
+  position: relative;
+  top: 10%;
+}
+
+.fake_reviews{
+    position: relative;
+    bottom: 10%;
 }

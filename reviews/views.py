@@ -2,6 +2,28 @@ from sqlite3 import Date
 from django.shortcuts import render
 from reviews.forms import ReviewForm
 from django.shortcuts import redirect
+from reviews.models import Review
+from django.views import View
+
+class ReviewsView(View):
+    def get(self,request):
+        form = ReviewForm()
+        reviews = Review.objects.all()
+        return render(request,'review.html',{'form':form,'reviews':reviews})
+    def post(self,request):
+        form = ReviewForm(request.POST) 
+
+        if form.is_valid(): 
+            data = form.cleaned_data 
+            name = data.get('name') 
+            email = data.get('email') 
+            review = data.get('review') 
+            rating = data.get('rating') 
+            Review.objects.create(name=name, email=email, review=review, rating=rating) 
+            return redirect('reviews') 
+        form = ReviewForm() 
+        reviews = Review.objects.all() 
+        return render(request, 'reviews.html', {'form': form, 'reviews': reviews})
 
 def reviews(request):
     if request.method == 'GET':
@@ -16,10 +38,9 @@ def reviews(request):
             name = data.get('name')
             email = data.get('email')
             review = data.get('review')
-            date = request.POST.get("date")
+            date = request.POST.get('date')
             rating = data.get('rating')
-            with open('data.csv','a')as file:
-                file.write(f'{name}|{email}|{review}|{date}|{rating}\n')
+            Review.objects.create(name,email,review,date,rating)
             return redirect('reviews')
         else:
             form = ReviewForm()
@@ -30,4 +51,4 @@ def reviews(request):
     review_1=request.GET.get("review")
     date_time_1=request.GET.get("date")
     print(f"Name:{name_1} , Date and Time:{date_time_1} , Email:{email_1} , Review:{review_1}")
-    return render(request,'review.html',{'name_1':name_1 , 'email_1':email_1, 'review_1':review_1, 'date_time_1':date_time_1, 'form':form})
+    return render(request,'review.html',{'form':form})
